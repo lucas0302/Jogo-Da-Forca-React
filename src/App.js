@@ -1,8 +1,8 @@
-
+import forca0 from "./assets/img/forca0.png"
 function App() {
     return(
         <>
-        <img src="./assets/img/forca0.png"></img>
+        <img src={forca0}></img>
         </>
     )
     
