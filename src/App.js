@@ -1,9 +1,10 @@
-import forca0 from "./assets/img/forca0.png"
+import palavras from "./constants/palavras";
+import alfabeto from "./constants/alfabeto"
 function App() {
     return(
-        <>
-        <img src={forca0}></img>
-        </>
+        <div>
+        
+        </div>
     )
     
 }
