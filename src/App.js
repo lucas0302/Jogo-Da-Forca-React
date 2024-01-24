@@ -15,13 +15,19 @@ function App() {
     const [palavraEscolhida, setPalavraEscolhida] = useState([]);
     const [palavraJogo, setPalavraJogo] = useState([]);
     const [letrasUsadas, setLetrasUsadas] = useState(alfabeto);
+    const [corPalavra, setCorPalavra] = useState("preto");
 
     function iniciarJogo() {
         setErros(0);
         setLetrasUsadas([]);
+        setCorPalavra("preto");
         sortearPalavra();
     }
 
+    function finalizarJogo() {
+        setPalavraJogo(palavraEscolhida);
+        setLetrasUsadas(alfabeto);
+    }
     function sortearPalavra() {
         const indice = Math.floor(Math.random() * palavras.length);
         const palavra = palavras[indice];
@@ -52,17 +58,29 @@ function App() {
             }
         });
         setPalavraJogo(novaPalavraJogo);
+        
+        if(!novaPalavraJogo.includes(" _ ")){
+            setCorPalavra("verde");
+            finalizarJogo();
+        }
     }
+
     function erroLetra(letra) {
         const novosErros = erros + 1;
         setErros(novosErros);
+
+        if(novosErros === 6){
+            setCorPalavra("vermelho");
+            finalizarJogo();
+        }
     }
+
     return (
         <div className="container-tela">
             <div className="container-forca">
                 <img src={imagens[erros]} alt="forca" />
                 <button onClick={iniciarJogo}>Escolher palavra</button>
-                <h1>{palavraJogo}</h1>
+                <h1 className={corPalavra} >{palavraJogo}</h1>
             </div>
             <div className="container-letras">
                 {alfabeto.map((letra) => <button key={letra}
