@@ -1,15 +1,8 @@
 import palavras from "./constants/palavras";
 import alfabeto from "./constants/alfabeto";
-import forca0 from "./assets/forca0.png";
-import forca1 from "./assets/forca1.png";
-import forca2 from "./assets/forca2.png";
-import forca3 from "./assets/forca3.png";
-import forca4 from "./assets/forca4.png";
-import forca5 from "./assets/forca5.png";
-import forca6 from "./assets/forca6.png";
+import Jogo from "./components/Jogo";
+import Letras from "./components/Letras";
 import { useState } from "react";
-
-const imagens = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
 function App() {
     const [erros, setErros] = useState(0);
     const [palavraEscolhida, setPalavraEscolhida] = useState([]);
@@ -42,9 +35,9 @@ function App() {
     function clicarLetra(letra) {
         setLetrasUsadas([...letrasUsadas, letra]);
 
-        if(palavraEscolhida.includes(letra)){
+        if (palavraEscolhida.includes(letra)) {
             acertoletra(letra);
-        }else{
+        } else {
             erroLetra(letra);
         }
     }
@@ -52,24 +45,24 @@ function App() {
     function acertoletra(letra) {
         const novaPalavraJogo = [...palavraJogo];
 
-        palavraEscolhida.forEach((l, i)=> {
-            if(l === letra){
+        palavraEscolhida.forEach((l, i) => {
+            if (l === letra) {
                 novaPalavraJogo[i] = letra;
             }
         });
         setPalavraJogo(novaPalavraJogo);
-        
-        if(!novaPalavraJogo.includes(" _ ")){
+
+        if (!novaPalavraJogo.includes(" _ ")) {
             setCorPalavra("verde");
             finalizarJogo();
         }
     }
 
-    function erroLetra(letra) {
+    function erroLetra() {
         const novosErros = erros + 1;
         setErros(novosErros);
 
-        if(novosErros === 6){
+        if (novosErros === 6) {
             setCorPalavra("vermelho");
             finalizarJogo();
         }
@@ -77,17 +70,8 @@ function App() {
 
     return (
         <div className="container-tela">
-            <div className="container-forca">
-                <img src={imagens[erros]} alt="forca" />
-                <button onClick={iniciarJogo}>Escolher palavra</button>
-                <h1 className={corPalavra} >{palavraJogo}</h1>
-            </div>
-            <div className="container-letras">
-                {alfabeto.map((letra) => <button key={letra}
-                    disabled={letrasUsadas.includes(letra)}
-                    onClick={() => clicarLetra(letra)}>{letra}</button>)}
-            </div>
-
+            <Jogo erros={erros} iniciarJogo={iniciarJogo} corPalavra={corPalavra} palavraJogo={palavraJogo}/>
+            <Letras letrasUsadas={letrasUsadas} clicarLetra={clicarLetra}/>
         </div>
     )
 

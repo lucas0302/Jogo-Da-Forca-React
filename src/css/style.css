@@ -1,4 +1,4 @@
-/* ----------------------------------------------- Tela */
+/*Tela */
 .container-tela {
     width: 100vw;
     height: 100vh;
@@ -8,7 +8,7 @@
     justify-content: center;
 }
 
-/* ----------------------------------------------- Forca */
+/*Forca */
 .container-forca {
     display: flex;
     align-items: flex-end;
@@ -46,7 +46,7 @@
 }
 
 
-/* ----------------------------------------------- Letras */
+/*Letras */
 .container-letras {
     display: flex;
     flex-wrap: wrap;
@@ -81,7 +81,7 @@
     cursor: default;
 }
 
-/* ----------------------------------------------- Input */
+/*Input */
 .container-input {
     display: flex;
     align-items: center;
@@ -126,7 +126,7 @@
     margin-right: 10px;
 }
 
-/* ----------------------------------------------- Cores */
+/*Cores */
 .preto {
     color: black;
 }
