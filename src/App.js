@@ -2,6 +2,7 @@ import palavras from "./constants/palavras";
 import alfabeto from "./constants/alfabeto";
 import Jogo from "./components/Jogo";
 import Letras from "./components/Letras";
+import Chute from "./components/Chute";
 import { useState } from "react";
 function App() {
     const [erros, setErros] = useState(0);
@@ -9,17 +10,22 @@ function App() {
     const [palavraJogo, setPalavraJogo] = useState([]);
     const [letrasUsadas, setLetrasUsadas] = useState(alfabeto);
     const [corPalavra, setCorPalavra] = useState("preto");
+    const [textoInput,setTextoInput] = useState("");
+    const [desabilitarInput, setDesabilitarInput] = useState(true);
 
     function iniciarJogo() {
         setErros(0);
         setLetrasUsadas([]);
         setCorPalavra("preto");
+        setDesabilitarInput(false);
+        setTextoInput("");
         sortearPalavra();
     }
 
     function finalizarJogo() {
         setPalavraJogo(palavraEscolhida);
         setLetrasUsadas(alfabeto);
+        setDesabilitarInput(true);
     }
     function sortearPalavra() {
         const indice = Math.floor(Math.random() * palavras.length);
@@ -68,10 +74,23 @@ function App() {
         }
     }
 
+    function chutarPalavra(){
+        let palavraString = "";
+        palavraEscolhida.forEach((letra) =>palavraString += letra);
+
+        if(palavraString === textoInput){
+            setCorPalavra("verde");
+        }else{
+            setCorPalavra("vermelho");
+            setErros(6);
+        }
+        finalizarJogo();
+    }
     return (
         <div className="container-tela">
             <Jogo erros={erros} iniciarJogo={iniciarJogo} corPalavra={corPalavra} palavraJogo={palavraJogo}/>
             <Letras letrasUsadas={letrasUsadas} clicarLetra={clicarLetra}/>
+            <Chute textoInput={textoInput} setTextoInput={setTextoInput} desabilitarInput={desabilitarInput} chutarPalavra={chutarPalavra}/>
         </div>
     )
 
