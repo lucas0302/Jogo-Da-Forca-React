@@ -23,7 +23,7 @@
 }
 
 .container-forca > button {
-    background-color: #27ae60;
+    background-color: #07acaf;
     border-radius: 8px;
     border-style: none;
     box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
@@ -70,7 +70,7 @@
 
 .container-letras > button:hover {
     background-color: #b3d3ea;
-    color: #2c5777;
+    color: #1fbdc0;
     cursor: pointer;
 }
 
@@ -97,7 +97,7 @@
     border: 1px solid #7aa7c7;
     font-size: 14px;
     font-weight: 800;
-    color: #39739d;
+    color: #1fbdc0;
     margin: 4px;
     height: 40px;
     padding: 0 10px;
@@ -106,7 +106,7 @@
 
 .container-input > button:hover {
     background-color: #b3d3ea;
-    color: #2c5777;
+    color: #5c91b9;
     cursor: pointer;
 }
 
