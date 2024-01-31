@@ -41,7 +41,7 @@ function App() {
     function clicarLetra(letra) {
         setLetrasUsadas([...letrasUsadas, letra]);
 
-        if (palavraEscolhida.includes(letra)) {
+        if (desconsiderarAcentos(palavraEscolhida).includes(letra)) {
             acertoletra(letra);
         } else {
             erroLetra(letra);
@@ -50,10 +50,11 @@ function App() {
 
     function acertoletra(letra) {
         const novaPalavraJogo = [...palavraJogo];
+        const palavraEscolhidaSemAcento = desconsiderarAcentos(palavraEscolhida);
 
-        palavraEscolhida.forEach((l, i) => {
+        palavraEscolhidaSemAcento.forEach((l, i) => {
             if (l === letra) {
-                novaPalavraJogo[i] = letra;
+                novaPalavraJogo[i] = palavraEscolhida[i];
             }
         });
         setPalavraJogo(novaPalavraJogo);
@@ -86,6 +87,14 @@ function App() {
         }
         finalizarJogo();
     }
+
+    function desconsiderarAcentos(palavraArray){
+        let palavraString = "";
+        palavraArray.forEach((letra) => palavraString += letra);
+
+        return palavraString.normalize('NFD').replace(/[\u0300-\u036f]/g, "").split("");
+    }
+
     return (
         <div className="container-tela">
             <Jogo erros={erros} iniciarJogo={iniciarJogo} corPalavra={corPalavra} palavraJogo={palavraJogo}/>
