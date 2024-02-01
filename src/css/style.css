@@ -19,12 +19,12 @@
 }
 
 .container-forca > img {
-    width: 400px;
+    width: 420px;
 }
 
 .container-forca > button {
     background-color: #07acaf;
-    border-radius: 8px;
+    border-radius: 25px;
     border-style: none;
     box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
     color: #fff;
@@ -59,7 +59,7 @@
     width: 40px;
     height: 40px;
     background-color: #e1ecf4;
-    border-radius: 3px;
+    border-radius: 50%;
     border: 1px solid #7aa7c7;
     text-transform: uppercase;
     font-size: 14px;
@@ -93,7 +93,7 @@
 
 .container-input > button {
     background-color: #e1ecf4;
-    border-radius: 5px;
+    border-radius: 20px;
     border: 1px solid #7aa7c7;
     font-size: 14px;
     font-weight: 800;
@@ -113,7 +113,7 @@
 .container-input > input {
     height: 12px;
     width: 300px;
-    border-radius: 5px;
+    border-radius: 20px;
     margin-right: 10px;
     padding: 10px;
     font-family: "Segoe UI";

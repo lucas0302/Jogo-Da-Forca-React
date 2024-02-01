@@ -21,8 +21,7 @@ const palavras = [
     "uva", "universo", "Coelho", "Convivência", "universidade", "urso", "Coração", "Basquete",
     "vela", "reciclar","valor", "Pijama", "Pão", "Assombração", "Chiclete", "vidro", "valsa",
     "xadrez", "psicólogo", "xarope", "xenofobia", "Limonada", "xerife", "Óculos", "Foto", "ônibus",
-    "zebra", "Elefante", "zoeira", "zepelim", "Balão", "Céu"
-    
+    "zebra", "Elefante", "zoeira", "zepelim", "Balão", "Céu", "conhecimento"  
 ];
 
 export default palavras
